@@ -1,0 +1,47 @@
+<html>
+    <body>
+        <pre>
+            holle.vm.
+            ##注释
+            #*
+            快
+             *#
+            $!{value1}
+            ${value2}
+            $!{value3}
+
+
+            #foreach($color in $colors)
+                Color$!{foreach.index}/$!{foreach.count}:$!{color}
+            #end
+
+            #foreach($key in $map.keySet())
+                Number $!{foreach.index}/$!{foreach.count}:$!{key} $map.get($key)
+            #end
+            #foreach($kv in $map.entrySet())
+                Number $!{foreach.index}/$!{foreach.count}: $!{kv.key} $!{kv.value}
+            #end
+            User:$!{user.name}
+            User:$!{user.getName()}
+           #set($title="nowcode");
+            Include: #include("header.vm")<br>
+            Parse: #parse("header.vm")
+
+            #macro(render_color,$color,$index)
+                Color By Macro $index,$color
+            #end
+            #foreach($color in $colors)
+               #render_color($color,$foreach.index)
+
+            #end
+            #set($hello="hello")
+            #set($hello1= "$!{hello} word")
+            #set($hello2= '$!{hello} word ')
+            hello:$!hello
+            hello1:$!hello1
+            hello2:$!hello2
+
+            $!{colors.size()}
+        </pre>
+    </body>
+</html>
